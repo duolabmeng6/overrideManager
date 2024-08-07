@@ -1,22 +1,18 @@
 # override Manager
 
-这是一个简单的 override 管理面板
+这是一个简单的 override 管理面板 一键启动
 
 
 
 # Window
-![image-1](./assets/1.png)
-![image-2](./assets/2.png)
-![image-3](./assets/3.png)
+
 
 # MacOS
-![image-20240728051210795](./assets/image-20240728051210795.png)
-
-
+![image-20240807232923351](./assets/image-20240807232923351.png)
 
 # 软件下载
 
-[最新版下载](https://github.com/duolabmeng6/override_ui/releases)
+[最新版下载](https://github.com/duolabmeng6/overrideManager/releases)
 
 # 运行环境
 
