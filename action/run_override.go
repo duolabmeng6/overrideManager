@@ -6,8 +6,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/duolabmeng6/goefun/ecore"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
@@ -529,8 +531,21 @@ func constructWithChatModel(body []byte, messages interface{}) []byte {
 
 var server *http.Server
 
+func isPortInUse(port int) bool {
+	conn, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
+	if err != nil {
+		return true
+	}
+	conn.Close()
+	return false
+}
 func Run_override(configContent string) (bool, error) {
 	cfg := readConfig(configContent)
+	// 检查端口是否已被占用
+	port := ecore.StrCut(cfg.Bind, ":$")
+	if isPortInUse(int(ecore.E到整数(port))) {
+		return false, fmt.Errorf("端口 %s 已在使用中", port)
+	}
 
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
@@ -547,9 +562,10 @@ func Run_override(configContent string) (bool, error) {
 		Addr:    cfg.Bind,
 		Handler: r,
 	}
-
+	//0.0.0.0:8181
+	// 2024/08/08 18:51:06 listen: listen tcp 0.0.0.0:8181: bind: address already in use 我的程序为什么挂了 可以不挂吗
 	go func() {
-		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			log.Fatalf("listen: %s\n", err)
 		}
 	}()

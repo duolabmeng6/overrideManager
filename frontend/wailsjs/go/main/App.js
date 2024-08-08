@@ -10,6 +10,10 @@ export function E写到文件(arg1, arg2) {
   return window['go']['main']['App']['E写到文件'](arg1, arg2);
 }
 
+export function E取运行目录() {
+  return window['go']['main']['App']['E取运行目录']();
+}
+
 export function E启动服务器(arg1) {
   return window['go']['main']['App']['E启动服务器'](arg1);
 }

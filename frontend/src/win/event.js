@@ -1,6 +1,7 @@
 import * as systemFc from "../../wailsjs/runtime";
 import * as goFc from "../../wailsjs/go/main/App";
 import {__load_data} from './__load_data'
+import {ElMessage, ElMessageBox} from "element-plus";
 
 let odata = {
     "bind": "0.0.0.0:8181",
@@ -50,10 +51,12 @@ Copilotchat 0.17.1
 按 ctrl+shift+p 输入 settings 打开首选项 加入这些配置 重启vscode`
 
 
+        let 配置文件目录 = await goFc.E取运行目录()
 
-
-        let data = await goFc.E读入文本("./my-config.conf")
+        let data = await goFc.E读入文本(配置文件目录 + "/my-config.conf")
         if (data !== "") {
+            ElMessage.success('已读取配置和启动服务 配置文件路径:' + 配置文件目录 + "/my-config.conf");
+
             comps.编辑框1.text = data
             c.按钮_启动服务被单击()
         }
@@ -63,13 +66,20 @@ Copilotchat 0.17.1
 
     c.按钮_启动服务被单击 = async function () {
         if (comps.按钮_启动服务.text === "启动服务") {
-            comps.按钮_启动服务.text = "停止服务"
-            let 状态 = await goFc.E启动服务器(comps.编辑框1.text)
-            comps.标签1.text = 状态
+            let 启动状态 = await goFc.E启动服务器(comps.编辑框1.text)
+            console.log("启动状态", 启动状态)
+            if (启动状态 == '启动成功'){
+                comps.按钮_启动服务.text = "停止服务"
+                ElMessage.success('已启动');
+            }else{
+                ElMessage.error(启动状态);
+            }
+            comps.标签1.text = 启动状态
         } else {
             comps.按钮_启动服务.text = "启动服务"
             await goFc.E停止服务器()
             comps.标签1.text = "已停止"
+            ElMessage.success('已停止');
 
         }
 
@@ -78,18 +88,22 @@ Copilotchat 0.17.1
 
     c.按钮_重置配置被单击 = async function () {
         console.log("按钮_重置配置被单击")
-        comps.编辑框1.text = JSON.stringify(odata)
-
+        comps.编辑框1.text = JSON.stringify(odata, null, 4)
+        ElMessage.success('已重置');
     }
 
     c.按钮_保存配置被单击 = async function () {
         console.log("按钮_保存配置被单击")
-        goFc.E写到文件("./my-config.conf", comps.编辑框1.text)
+        let 配置文件目录 = await goFc.E取运行目录()
+        await goFc.E写到文件(配置文件目录 + "/my-config.conf", comps.编辑框1.text)
+
+        ElMessage.success('保存到' + 配置文件目录 + "/my-config.conf");
     }
 
     c.标签3被单击 = async function () {
         console.log("标签3被单击")
         systemFc.BrowserOpenURL("https://my.rongyiapi.com/post/rang-Copilot-yong-shang-DeepSeek-zong-yu-gao-ming-bai-le-vscode-he-JetBrainsIDE-du-neng-yong.html")
+
     }
 //Don't delete the event function flag
 }

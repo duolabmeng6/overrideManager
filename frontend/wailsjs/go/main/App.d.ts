@@ -5,6 +5,8 @@ export function E停止服务器():Promise<string>;
 
 export function E写到文件(arg1:string,arg2:string):Promise<void>;
 
+export function E取运行目录():Promise<string>;
+
 export function E启动服务器(arg1:string):Promise<string>;
 
 export function E检查更新():Promise<string>;

@@ -37,7 +37,7 @@ func (a *App) E启动服务器(配置内容 string) string {
 	if err != nil {
 		return err.Error()
 	}
-	return "已启动"
+	return "启动成功"
 }
 
 func (a *App) E停止服务器() string {
@@ -51,5 +51,9 @@ func (a *App) E写到文件(文件路径 string, 写出数据 string) error {
 }
 func (a *App) E读入文本(文件路径 string) string {
 	data := ecore.E读入文本(文件路径)
+	return data
+}
+func (a *App) E取运行目录() string {
+	data := ecore.E取运行目录()
 	return data
 }
