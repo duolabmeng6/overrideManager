@@ -17,6 +17,7 @@ function __aux_code() {
         编辑框2 : designData[0].childComponents[0].childComponents[2].childComponents[0],
         标签2 : designData[0].childComponents[0].childComponents[2].childComponents[1],
         标签3 : designData[0].childComponents[0].childComponents[2].childComponents[2],
+        按钮1 : designData[0].childComponents[0].childComponents[2].childComponents[3],
 
     }
 }

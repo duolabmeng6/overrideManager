@@ -105,5 +105,16 @@ Copilotchat 0.17.1
         systemFc.BrowserOpenURL("https://my.rongyiapi.com/post/rang-Copilot-yong-shang-DeepSeek-zong-yu-gao-ming-bai-le-vscode-he-JetBrainsIDE-du-neng-yong.html")
 
     }
+
+    c.按钮1被单击 = async function () {
+        systemFc.ClipboardSetText(comps.编辑框2.text)
+        ElMessage.success('已复制');
+
+    }
+
+    c.按钮_检查更新被单击 = async function () {
+        ElMessage.success('检查更新中');
+        await goFc.E检查更新();
+    }
 //Don't delete the event function flag
 }

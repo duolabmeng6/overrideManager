@@ -20,7 +20,7 @@
         "left": "0",
         "width": "100%",
         "height": "100%",
-        "value": "2",
+        "value": "1",
         "noPlace": true,
         "visible": true,
         "disable": false,
@@ -271,6 +271,26 @@
                 "fid": "id-49704",
                 "data_id": "208c8b",
                 "event_click": "标签3被单击"
+              },
+              {
+                "top": "352",
+                "left": "587",
+                "width": "76",
+                "height": "40",
+                "noPlace": true,
+                "buttonType": "default",
+                "visible": true,
+                "disable": false,
+                "size": "custom",
+                "zIndex": 0,
+                "text": "复制配置",
+                "id": "id-19657",
+                "componentName": "elButton",
+                "componentRawName": "Button",
+                "name": "按钮1",
+                "fid": "id-49704",
+                "data_id": "05b11e",
+                "event_click": "按钮1被单击"
               }
             ],
             "data_id": "430c6a"
