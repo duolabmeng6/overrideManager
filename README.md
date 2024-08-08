@@ -1,11 +1,10 @@
 # override Manager
 
+这个仓库什么也不能做，请不要盯着我。
+
 这是一个简单的 override 管理面板 一键启动
 
-
-
 # Window
-
 
 # MacOS
 ![image-20240807232923351](./assets/image-20240807232923351.png)
