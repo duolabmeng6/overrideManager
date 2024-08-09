@@ -539,7 +539,7 @@ func isPortInUse(port int) bool {
 	conn.Close()
 	return false
 }
-func Run_override(configContent string) (bool, error) {
+func Run_override(configContent string, logWriter *bytes.Buffer) (bool, error) {
 	cfg := readConfig(configContent)
 	// 检查端口是否已被占用
 	port := ecore.StrCut(cfg.Bind, ":$")
@@ -548,6 +548,7 @@ func Run_override(configContent string) (bool, error) {
 	}
 
 	gin.SetMode(gin.ReleaseMode)
+	gin.DefaultWriter = logWriter
 	r := gin.Default()
 
 	proxyService, err := NewProxyService(cfg)

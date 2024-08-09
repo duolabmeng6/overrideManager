@@ -20,7 +20,7 @@
         "left": "0",
         "width": "100%",
         "height": "100%",
-        "value": "1",
+        "value": "3",
         "noPlace": true,
         "visible": true,
         "disable": false,
@@ -294,6 +294,46 @@
               }
             ],
             "data_id": "430c6a"
+          },
+          {
+            "id": "id-77320",
+            "name": "ContentArea1",
+            "text": "日志",
+            "componentName": "elContainer",
+            "top": "0",
+            "left": "0",
+            "width": "100%",
+            "height": "100%",
+            "noPlace": false,
+            "noDrag": true,
+            "visible": true,
+            "disable": false,
+            "pid": "id-13078",
+            "childComponents": [
+              {
+                "top": "9",
+                "left": "11",
+                "width": "670",
+                "height": "374",
+                "noPlace": true,
+                "visible": true,
+                "disable": false,
+                "zIndex": 0,
+                "size": "custom",
+                "内容": "",
+                "type": "textarea",
+                "placeholder": "请输入..",
+                "maxlength": -1,
+                "id": "id-34301",
+                "componentName": "elTextEdit",
+                "componentRawName": "TextEdit",
+                "name": "编辑框3",
+                "text": "编辑框3",
+                "fid": "id-77320",
+                "data_id": "b9dda5"
+              }
+            ],
+            "data_id": "195f1e"
           }
         ],
         "id": "id-13078",

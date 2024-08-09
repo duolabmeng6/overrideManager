@@ -1,7 +1,7 @@
 import * as systemFc from "../../wailsjs/runtime";
 import * as goFc from "../../wailsjs/go/main/App";
 import {__load_data} from './__load_data'
-import {ElMessage, ElMessageBox} from "element-plus";
+import {ElMessage} from "element-plus";
 
 let odata = {
     "bind": "0.0.0.0:8181",
@@ -38,6 +38,13 @@ export function BindWindowEvent() {
     let comps = c.comps
     c.WinCreated = async function () {
         console.log("Win创建完毕")
+        comps.编辑框3.text = ""
+        systemFc.EventsOn("logs", function (data) {
+            let jsondata = JSON.parse(data);
+            console.log("jsondata",jsondata)
+            comps.编辑框3.text = comps.编辑框3.text + jsondata.logs;
+        });
+
         comps.Win.text = "overrideManager " + await goFc.GetVersion();
         comps.选择夹3.value = "0"
 
@@ -68,10 +75,10 @@ Copilotchat 0.17.1
         if (comps.按钮_启动服务.text === "启动服务") {
             let 启动状态 = await goFc.E启动服务器(comps.编辑框1.text)
             console.log("启动状态", 启动状态)
-            if (启动状态 == '启动成功'){
+            if (启动状态 == '启动成功') {
                 comps.按钮_启动服务.text = "停止服务"
                 ElMessage.success('已启动');
-            }else{
+            } else {
                 ElMessage.error(启动状态);
             }
             comps.标签1.text = 启动状态

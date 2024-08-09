@@ -18,6 +18,8 @@ function __aux_code() {
         标签2 : designData[0].childComponents[0].childComponents[2].childComponents[1],
         标签3 : designData[0].childComponents[0].childComponents[2].childComponents[2],
         按钮1 : designData[0].childComponents[0].childComponents[2].childComponents[3],
+        ContentArea1 : designData[0].childComponents[0].childComponents[3],
+        编辑框3 : designData[0].childComponents[0].childComponents[3].childComponents[0],
 
     }
 }
